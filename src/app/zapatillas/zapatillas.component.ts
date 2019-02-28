@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Zapatilla } from '../models/zapatilla';
-
+//import { ZapatillaService } from '../services/ZapatillaService';
+import { ZapatillaService } from '../services/zapatilla.service';
 
 @Component({
     selector: 'zapatillas',
-    templateUrl: './zapatillas.Component.html'      
+    templateUrl: './zapatillas.Component.html' ,
+    providers:[ZapatillaService]     
   })
 
 
@@ -12,21 +14,24 @@ import { Zapatilla } from '../models/zapatilla';
       public titulo:string = "Componente de zapatillas";
       public zapatillas:Array<Zapatilla>;
       public marcas:String[];
+      public color:string;
+      public mi_marca:string;
 
-      constructor(){
+      constructor(
+      private _zapatillaService:ZapatillaService //Los servicios por lo general llevan un guien bajo delante
+      ){
+            this.mi_marca = "Contenido de mi input";
             this.marcas = new Array();
+            this.color = 'red';
 
-            this.zapatillas = [
-                  new Zapatilla('Rebook classic','Rebook','Blanco',190,true),
-                  new Zapatilla('nike runner','nike','rebook',80,false),
-                  new Zapatilla('Rebook classic','Rebook','Blanco',60,true),
-                  new Zapatilla('Rebook classic','Rebook','Blanco',60,true),
-                  new Zapatilla('Addidas yezzy','addidas','azules',180,true)            
-            ];
       }
 
       ngOnInit(): void {
+            
             console.log(this.zapatillas);
+
+            this.zapatillas = this._zapatillaService.getZapatillas() 
+            alert(this._zapatillaService.getTexto())
             this.getMarcas();
       }
 
@@ -42,6 +47,28 @@ import { Zapatilla } from '../models/zapatilla';
                   */
 
             });
+      }
+
+      getMarca(){
+            alert(this.mi_marca)
+      }
+
+      addMarca(){
+            this.marcas.push(this.mi_marca)
+      }
+
+      borrarMarca(index){
+            
+            //delete this.marcas[index];
+            this.marcas.splice(index,1)
+      }
+
+      onBlur(){
+            console.log("Ha salido del input")
+      }
+
+      mostrarPalabra(){
+            alert(this.mi_marca)
       }
 
   }

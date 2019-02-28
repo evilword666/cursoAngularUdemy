@@ -1,0 +1,17 @@
+.altoprecio{
+    color: yellowgreen;
+    font-size: 38px;
+}
+
+.fondoRojo{
+    background: red;
+
+}
+
+.subrayado{
+    text-decoration: underline;
+}
+
+.active{
+    border: 3px solid yellow;
+}
