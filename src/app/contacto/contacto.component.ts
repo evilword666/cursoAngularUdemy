@@ -17,9 +17,10 @@ public usuario:ContactoUsuario;
   ngOnInit() {
   }
 
-  onSubmit(){
+  onSubmit(form){
     console.log("Evento submit lanzado")
-    console.log(this.usuario)
+    console.log(this.usuario)    
+    form.reset();
   }
 
 }

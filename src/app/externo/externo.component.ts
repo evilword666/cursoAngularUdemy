@@ -11,12 +11,16 @@ export class ExternoComponent implements OnInit {
   public user:any;
   public userId:number;
   public fecha:any;
-
+  public new_user:any;
 
   constructor(
     private _peticionesService: PeticionesService
   ) {
     this.userId = 2;
+    this.new_user = {
+      "name":"",
+      "job":"",
+    };
    }
 
   ngOnInit() {
