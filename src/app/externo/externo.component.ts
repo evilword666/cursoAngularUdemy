@@ -16,7 +16,7 @@ export class ExternoComponent implements OnInit {
   constructor(
     private _peticionesService: PeticionesService
   ) {
-    this.userId = 2;
+    this.userId = 4;
     this.new_user = {
       "name":"",
       "job":"",
